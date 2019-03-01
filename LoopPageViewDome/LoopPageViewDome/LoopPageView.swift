@@ -51,6 +51,10 @@ class LoopPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        removeTimer()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layout.itemSize = frame.size
