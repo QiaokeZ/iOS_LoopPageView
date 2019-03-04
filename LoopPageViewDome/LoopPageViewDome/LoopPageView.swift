@@ -91,7 +91,14 @@ class LoopPageView: UIView {
     }
     
     func reloadData(){
-        collectionView.reloadData()
+        if dataSource != nil{
+            collectionView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.collectionView.scrollToItem(at: IndexPath(item: 0, section: self.sectionCount / 2),
+                                                 at: self.direction == .vertical ? .centeredVertically : .centeredHorizontally,
+                                                 animated: false)
+            }
+        }
     }
 }
 
@@ -112,10 +119,12 @@ extension LoopPageView {
         collectionView.isPagingEnabled = true
         addSubview(collectionView)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: self.sectionCount / 2),
-                at: self.direction == .vertical ? .centeredVertically : .centeredHorizontally,
-                animated: false)
+        if dataSource != nil{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.collectionView.scrollToItem(at: IndexPath(item: 0, section: self.sectionCount / 2),
+                    at: self.direction == .vertical ? .centeredVertically : .centeredHorizontally,
+                    animated: false)
+            }
         }
     }
 
