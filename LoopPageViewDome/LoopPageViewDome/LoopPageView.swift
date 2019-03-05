@@ -147,7 +147,8 @@ extension LoopPageView {
     }
 
     @objc private func nextPage() {
-        guard var indexPath = collectionView.indexPathsForVisibleItems.last else {
+        guard var indexPath = collectionView.indexPathsForVisibleItems.last,
+            let _ = dataSource else {
             return
         }
         if indexPath.item + 1 == dataSource?.numberOfRows(in: self){

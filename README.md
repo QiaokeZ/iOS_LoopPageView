@@ -1,5 +1,5 @@
 # iOS_LoopPageView
-
+### 简书(https://www.jianshu.com/p/ae1b84b107ea)
  ![image](https://github.com/QiaokeZ/iOS_LoopPageView/blob/master/LoopPageViewDome/LoopPageViewDome/dome.gif)
 
 ```swift
